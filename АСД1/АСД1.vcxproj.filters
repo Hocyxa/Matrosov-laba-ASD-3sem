@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sroke.h">
+    <ClInclude Include="sroke.cpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
