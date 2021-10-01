@@ -21,7 +21,7 @@ public:
 		_str = new char[_size + 1];
 		strcpy(_str, rhs._str);
 	}
-	~string() {delete [] _str; };
+	~string() {};
 	unsigned Get_size()
 	{
 		return _size;
@@ -31,21 +31,21 @@ public:
 		if ((index > _size - 1) || (index < 0) || (_size == 0))throw "Incorrect index!";
 		return _str[index];
 	};
-	friend string operator+(const string& rhs1, const string& rhs2)
+	string operator+(const string& rhs1)
 	{
 		string _temp("");  
 		
 		delete[] _temp._str;                   
-		_temp._size = rhs1._size + rhs2._size;       
+		_temp._size = _size + rhs1._size;       
 		_temp._str = new char[_temp._size +1]; 
 		unsigned i = 0;
-		for (i; i < rhs1._size; i++)
+		for (i; i < _size; i++)
 		{
-			_temp._str[i] = rhs1._str[i];
+			_temp._str[i] = _str[i];
 		}
-		for (unsigned j = 0; j < rhs2._size; j++)
+		for (unsigned j = 0; j < rhs1._size; j++)
 		{
-			_temp._str[i] = rhs2._str[j];
+			_temp._str[i] = rhs1._str[j];
 			i++;
 		}
 		_temp._str[_temp._size] = 0;
@@ -66,6 +66,19 @@ public:
 			}
 		}
 		_temp._str[_size * n ] = 0;
+		return _temp;
+	};
+	string substring(unsigned index, unsigned size, const string& rhs)
+	{
+		string _temp;
+		delete _temp._str;
+		_temp._size = size;
+		_temp._str = new char[_temp._size + 1];
+		for (unsigned i = 0; i < size; i++)
+		{
+			_temp._str[i] = rhs._str[index + i];
+		}
+		_temp._str[size] = 0;
 		return _temp;
 	};
 	string& operator=(const char* s)

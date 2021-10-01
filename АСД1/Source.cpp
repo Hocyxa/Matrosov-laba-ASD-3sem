@@ -6,11 +6,188 @@ using std::cout;
 
 int main()
 {
-	std::cout << "Laboratory work 1. Class:Set" << "\n";
-	string A("I love Sony ");
-	string B("very very!!!");
-	string C = A*3;
-	std::cout << C << "\n";
-	std::cout << A << "\n";
+	string A("Love");
+	string B("Sofia");
+	string C;
+	int unsigned Menu;
+	int unsigned index;
+	std::cout << "Laboratory work 1. Class:Stroke" << "\n";
+	system("pause");
+	for (;;)
+	{
+		system("cls");
+		std::cout << "1.Get a character by index" << "\n"; // Чтение по индексу
+		std::cout << "1.Writing a character by index" << "\n"; // ЗАпись по индексу
+		std::cout << "3.Combining storke" << "\n"; // Соеденить строки
+		std::cout << "4.Repeat the stroke" << "\n"; // Повторить строку н раз
+		std::cout << "5.Replace stroke" << "\n"; // Перезаписать строку
+		std::cout << "6.Get a substring" << "\n"; // Получить подстроку
+		std::cout << "Esc.Exit" << "\n";  // Выйти
+		std::cout << "First stroke:" << A << "\n";
+		std::cout << "Second stroke:" << B << "\n";
+		Menu = _getch();
+		if (Menu == 27) break;
+		switch (Menu)
+		{
+		case 49: // Чтение по индексу
+			for(;;)
+			{
+				system("cls");
+				std::cout << "Select stroke" << "\n";
+				std::cout << "1. " << A << "\n";
+				std::cout << "2. " << B << "\n";
+				std::cout << "Esc.Back to main menu" << "\n";
+				Menu = _getch();
+				if (Menu == 27) break;
+				switch (Menu)
+				{
+				case 49: //Первая строка
+				{
+					system("cls");
+					std::cout << "Select index" << "\n";
+					std::cout << "1. " << A << "\n";
+					std::cout << "Your index:";
+					std::cin >> index;
+					std::cout << "\n";
+					if (std::cin.fail())
+					{
+						std::cin.clear();
+						std::cin.ignore(32767, '\n');
+						std::cout << "Enter the integer number!" << "\n";
+						system("pause");
+						break;
+					}
+					try {
+						std::cout << "This is your character:" << A[index - 1] << "\n";
+					}
+					catch (const char* err)
+					{
+						std::cerr << err << "\n";
+						system("pause");
+						break;
+					}
+					system("pause");
+					break;
+				}
+				case 50: // Вторая строка
+				{
+					system("cls");
+					std::cout << "Select index" << "\n";
+					std::cout << "2. " << B << "\n";
+					std::cout << "Your index:";
+					std::cin >> index;
+					std::cout << "\n";
+					if (std::cin.fail())
+					{
+						std::cin.clear();
+						std::cin.ignore(32767, '\n');
+						std::cout << "Enter the integer number!" << "\n";
+						system("pause");
+						break;
+					}
+					try {
+						std::cout << "This is your character:" << A[index - 1] << "\n";
+					}
+					catch (const char* err)
+					{
+						std::cerr << err << "\n";
+						system("pause");
+						break;
+					}
+					system("pause");
+					break;
+				}
+
+				}
+
+			}
+		case 50: // Запись о индексу
+			for (;;)
+			{
+				system("cls");
+				std::cout << "Select stroke" << "\n";
+				std::cout << "1. " << A << "\n";
+				std::cout << "2. " << B << "\n";
+				std::cout << "Esc.Back to main menu" << "\n";
+				Menu = _getch();
+				if (Menu == 27) break;
+				switch (Menu)
+				{
+				case 49: //Первая строка
+				{
+					system("cls");
+					std::cout << "Select index" << "\n";
+					std::cout << "1. " << A << "\n";
+					std::cout << "Your index:";
+					std::cin >> index;
+					if (std::cin.fail())
+					{
+						std::cin.clear();
+						std::cin.ignore(32767, '\n');
+						std::cout << "Enter the integer number!" << "\n";
+						system("pause");
+						break;
+					}
+					try {
+						char character;
+						std::cout<<"Your characte:";
+						std::cin >> character;
+						A[index - 1] = character;
+					}
+					catch (const char* err)
+					{
+						std::cerr << err << "\n";
+						system("pause");
+						break;
+					}
+					std::cout << "New stoke: " << A << "\n";
+					system("pause");
+					break;
+				}
+				case 50: // Вторая строка
+				{
+					system("cls");
+					std::cout << "Select index" << "\n";
+					std::cout << "2. " << B << "\n";
+					std::cout << "Your index:";
+					std::cin >> index;
+					std::cout << "\n";
+					if (std::cin.fail())
+					{
+						std::cin.clear();
+						std::cin.ignore(32767, '\n');
+						std::cout << "Enter the integer number!" << "\n";
+						system("pause");
+						break;
+					}
+					try {
+						char character;
+						std::cout << "Your characte:";
+						std::cin >> character;
+						B[index - 1] = character;
+					}
+					catch (const char* err)
+					{
+						std::cerr << err << "\n";
+						system("pause");
+						break;
+					}
+					std::cout << "New stoke: " << B << "\n";
+					system("pause");
+					break;
+				}
+				}
+
+			}
+		case 51: //Соеденить строчки
+			for (;;)
+			{
+				system("cls");
+
+			}
+		}
+	}
+
+	
 	return 0;
 }
