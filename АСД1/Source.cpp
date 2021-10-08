@@ -97,7 +97,7 @@ int main()
 						break;
 					}
 					try {
-						std::cout << "This is your character:" << A[index - 1] << "\n";
+						std::cout << "This is your character:" << B[index - 1] << "\n";
 					}
 					catch (const char* err)
 					{
