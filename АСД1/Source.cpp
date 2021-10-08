@@ -15,8 +15,8 @@ char* newstroke()
 
 int main()
 {
-	string A("Love");
-	string B("Sofia");
+	string A;
+	string B;
 	string C;
 	int unsigned Menu;
 	unsigned index;
@@ -260,7 +260,7 @@ int main()
 			for (;;)
 			{
 				system("cls");
-				std::cout << "Select ctroke" << "\n";  
+				std::cout << "Select stroke" << "\n";  
 				std::cout << "1." << A << "\n";
 				std::cout << "2." << B << "\n";
 				std::cout << "Esc.Exit" << "\n";
@@ -277,7 +277,6 @@ int main()
 					B = newstroke();
 					break;
 				}
-				
 			}
 			break;
 		case 54:
@@ -311,7 +310,5 @@ int main()
 			break;
 		}
 	}
-
-	
 	return 0;
 }
