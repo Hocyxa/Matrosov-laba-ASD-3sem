@@ -51,7 +51,7 @@ public:
 		_temp._str[_temp._size] = 0;
 		return _temp;
 	};
-	 string operator*(const int n)
+	 string operator*(const unsigned n)
 	{
 		string _temp("");
 		delete[] _temp._str;
@@ -76,7 +76,7 @@ public:
 		_temp._str = new char[_temp._size + 1];
 		for (unsigned i = 0; i < size; i++)
 		{
-			_temp._str[i] = rhs._str[index + i];
+			_temp._str[i] = rhs._str[index + i - 1];
 		}
 		_temp._str[size] = 0;
 		return _temp;
