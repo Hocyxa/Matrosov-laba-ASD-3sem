@@ -18,7 +18,7 @@ int main()
 	string A;
 	string B;
 	string C;
-	int unsigned Menu;
+	unsigned Menu;
 	unsigned index;
 	unsigned num;
 	std::cout << "Laboratory work 1. Class:Stroke" << "\n";
