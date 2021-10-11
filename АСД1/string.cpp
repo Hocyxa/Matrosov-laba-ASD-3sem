@@ -26,6 +26,10 @@ public:
 	{
 		return _size;
 	};
+	char* Get_str()
+	{
+		return _str;
+	};
 	char& operator[](unsigned index)
 	{
 		if ((index > _size - 1) || (index < 0) || (_size == 0))throw "Incorrect index!";
