@@ -140,7 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="string.cpp" />
+    <ClInclude Include="list.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp" />

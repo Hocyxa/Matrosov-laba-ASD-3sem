@@ -1,23 +1,51 @@
 #include <iostream>
 #include <conio.h>
-#include "string.cpp"
+#include "list.cpp"
 using std::cin;
 using std::cout;
 
 char* newstroke()
 {
 	char str[100];
-	gets_s(str);
+	std::cin >> str;
 	char* newstr = new char (strlen(str)+1);
 	strcpy(newstr, str);
 	return newstr;
 }
+size_t select_start()
+{
+	cout << "Select first element:";
+	size_t start;
+	cin >> start;
+	return start;
+}
+size_t select_stop()
+{
+	cout << "Select last element:";
+	size_t stop;
+	cin >> stop;
+	return stop;
+}
+double Get_Delem()
+{
+	std::cout << "Your elem:";
+	double elem;
+	cin >> elem;
+	return elem;
+}
+int Get_Ielem()
+{
+	std::cout << "Your elem:";
+	int elem;
+	cin >> elem;
+	return elem;
+}
 
 int main()
 {
-	string A;
-	string B;
-	string C;
+	list<double> A;
+	list<double> B;
+	list<double> C;
 	unsigned Menu;
 	unsigned index;
 	unsigned num;
@@ -30,8 +58,9 @@ int main()
 		std::cout << "2.Writing a character by index" << "\n"; // ЗАпись по индексу
 		std::cout << "3.Combining storke" << "\n"; // Соеденить строки
 		std::cout << "4.Repeat the stroke" << "\n"; // Повторить строку н раз
-		std::cout << "5.Replace stroke" << "\n"; // Перезаписать строку
-		std::cout << "6.Get a substring" << "\n"; // Получить подстроку
+		std::cout << "5.Add element to the end of the list" << "\n"; // Добавить в корнец
+		std::cout << "6.Add element to the end of the list" << "\n"; // Добавить вначало
+		std::cout << "7.Get a sublist" << "\n"; // Получить подстроку
 		std::cout << "Esc.Exit" << "\n";  // Выйти
 		std::cout << "First stroke:" << A << "\n";
 		std::cout << "Second stroke:" << B << "\n";
@@ -256,7 +285,7 @@ int main()
 				}
 			}
 			break;
-		case 53: //Перезапись
+		case 53: //Добавить в конец
 			for (;;)
 			{
 				system("cls");
@@ -269,17 +298,35 @@ int main()
 				switch (Menu)
 				{
 				case 49:
-					std::cout << "Your stroke:";
-					A = newstroke();
+					A=A.append(Get_elem());
 					break;
 				case 50:
-					std::cout << "Your stroke:";
-					B = newstroke();
+					B =B.append(Get_elem());
 					break;
 				}
 			}
 			break;
-		case 54:
+		case 54://Добавить вначало
+			for (;;)
+			{
+				system("cls");
+				std::cout << "Select list" << "\n";
+				std::cout << "1." << A << "\n";
+				std::cout << "2." << B << "\n";
+				std::cout << "Esc.Exit" << "\n";
+				Menu = _getch();
+				if (Menu == 27) break;
+				switch (Menu)
+				{
+				case 49:
+					A = A.extend(Get_elem());
+					break;
+				case 50:
+					B = B.extend(Get_elem());
+					break;
+				}
+			}
+		case 55: //подлист
 			for (;;)
 			{
 				system("cls");
@@ -292,18 +339,10 @@ int main()
 				switch (Menu)
 				{
 				case 49:
-					std::cout << "Select index:";
-					std::cin >> index;
-					std::cout << "Select number of characters:";
-					std::cin >> num;
-					C=C.substring(index, num, A);
+					C=A(select_start(), select_stop());
 					break;
 				case 50:
-					std::cout << "Select index:";
-					std::cin >> index;
-					std::cout << "Select number of characters:";
-					std::cin >> num;
-					C=C.substring(index, num, B);
+					C = B(select_start(), select_stop());
 					break;
 				}
 			}

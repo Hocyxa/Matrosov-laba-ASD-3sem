@@ -5,7 +5,7 @@
 TEST(string, OperatorSquareBrackets)//[]
 {
 	string a("1");
-	ASSERT_EQ(1, a[0]);
+	EXPECT_EQ(1, a[0]);
 }
 
 TEST(string, OperationPlus)//+
@@ -16,7 +16,7 @@ TEST(string, OperationPlus)//+
 	string c = a + b;
 	for (int i = 0; i < strlen(test); i++)
 	{
-		ASSERT_EQ(test[i], c[i]);
+		EXPECT_EQ(test[i], c[i]);
 	}
 }
 
@@ -27,9 +27,10 @@ TEST(string, OperationMnog)//*
 	string c = a * 3;
 	for (int i = 0; i < strlen(test); i++)
 	{
-		ASSERT_EQ(test[i], c[i]);
+		EXPECT_EQ(test[i], c[i]);
 	}
 }
+
 TEST(string, Substring)//Substring
 {
 	char test[] = "est";
@@ -37,9 +38,10 @@ TEST(string, Substring)//Substring
 	string c = a.substring(2, 3, a);
 	for (int i = 0; i < strlen(test); i++)
 	{
-		ASSERT_EQ(test[i], c[i]);
+		EXPECT_EQ(test[i], c[i]);
 	}
 }
+
 TEST(string, ExceptionInSquareBracketsOperator)//Исключение []
 {
 	string a("t");
