@@ -298,10 +298,10 @@ int main()
 				switch (Menu)
 				{
 				case 49:
-					A=A.append(Get_elem());
+					A=A.append(Get_Delem());
 					break;
 				case 50:
-					B =B.append(Get_elem());
+					B =B.append(Get_Delem());
 					break;
 				}
 			}
