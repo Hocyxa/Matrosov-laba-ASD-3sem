@@ -319,10 +319,10 @@ int main()
 				switch (Menu)
 				{
 				case 49:
-					A = A.extend(Get_elem());
+					A = A.extend(Get_Delem());
 					break;
 				case 50:
-					B = B.extend(Get_elem());
+					B = B.extend(Get_Delem());
 					break;
 				}
 			}
