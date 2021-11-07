@@ -1,51 +1,23 @@
 #include <iostream>
 #include <conio.h>
-#include "list.cpp"
+#include "string.cpp"
 using std::cin;
 using std::cout;
 
 char* newstroke()
 {
 	char str[100];
-	std::cin >> str;
-	char* newstr = new char (strlen(str)+1);
+	gets_s(str);
+	char* newstr = new char(strlen(str) + 1);
 	strcpy(newstr, str);
 	return newstr;
-}
-size_t select_start()
-{
-	cout << "Select first element:";
-	size_t start;
-	cin >> start;
-	return start;
-}
-size_t select_stop()
-{
-	cout << "Select last element:";
-	size_t stop;
-	cin >> stop;
-	return stop;
-}
-double Get_Delem()
-{
-	std::cout << "Your elem:";
-	double elem;
-	cin >> elem;
-	return elem;
-}
-int Get_Ielem()
-{
-	std::cout << "Your elem:";
-	int elem;
-	cin >> elem;
-	return elem;
 }
 
 int main()
 {
-	list<double> A;
-	list<double> B;
-	list<double> C;
+	string A;
+	string B;
+	string C;
 	unsigned Menu;
 	unsigned index;
 	unsigned num;
@@ -54,14 +26,13 @@ int main()
 	for (;;)
 	{
 		system("cls");
-		std::cout << "1.Get a character by index" << "\n"; // Чтение по индексу
-		std::cout << "2.Writing a character by index" << "\n"; // ЗАпись по индексу
-		std::cout << "3.Combining storke" << "\n"; // Соеденить строки
-		std::cout << "4.Repeat the stroke" << "\n"; // Повторить строку н раз
-		std::cout << "5.Add element to the end of the list" << "\n"; // Добавить в корнец
-		std::cout << "6.Add element to the end of the list" << "\n"; // Добавить вначало
-		std::cout << "7.Get a sublist" << "\n"; // Получить подстроку
-		std::cout << "Esc.Exit" << "\n";  // Выйти
+		std::cout << "1.Get a character by index" << "\n"; // ?????? ?? ???????
+		std::cout << "2.Writing a character by index" << "\n"; // ?????? ?? ???????
+		std::cout << "3.Combining storke" << "\n"; // ????????? ??????
+		std::cout << "4.Repeat the stroke" << "\n"; // ????????? ?????? ? ???
+		std::cout << "5.Replace stroke" << "\n"; // ???????????? ??????
+		std::cout << "6.Get a substring" << "\n"; // ???????? ?????????
+		std::cout << "Esc.Exit" << "\n";  // ?????
 		std::cout << "First stroke:" << A << "\n";
 		std::cout << "Second stroke:" << B << "\n";
 		std::cout << "Result stroke:" << C << "\n";
@@ -69,8 +40,8 @@ int main()
 		if (Menu == 27) break;
 		switch (Menu)
 		{
-		case 49: // Чтение по индексу
-			for(;;)
+		case 49: // ?????? ?? ???????
+			for (;;)
 			{
 				system("cls");
 				std::cout << "Select stroke" << "\n";
@@ -81,7 +52,7 @@ int main()
 				if (Menu == 27) break;
 				switch (Menu)
 				{
-				case 49: //Первая строка
+				case 49: //?????? ??????
 				{
 					system("cls");
 					std::cout << "Select index" << "\n";
@@ -109,7 +80,7 @@ int main()
 					system("pause");
 					break;
 				}
-				case 50: // Вторая строка
+				case 50: // ?????? ??????
 				{
 					system("cls");
 					std::cout << "Select index" << "\n";
@@ -137,10 +108,10 @@ int main()
 					system("pause");
 					break;
 				}
-				}	
+				}
 			}
 			break;
-		case 50: // Запись о индексу
+		case 50: // ?????? ? ???????
 			for (;;)
 			{
 				system("cls");
@@ -152,7 +123,7 @@ int main()
 				if (Menu == 27) break;
 				switch (Menu)
 				{
-				case 49: //Первая строка
+				case 49: //?????? ??????
 				{
 					system("cls");
 					std::cout << "Select index" << "\n";
@@ -169,7 +140,7 @@ int main()
 					}
 					try {
 						char character;
-						std::cout<<"Your characte:";
+						std::cout << "Your characte:";
 						std::cin >> character;
 						A[index - 1] = character;
 					}
@@ -183,7 +154,7 @@ int main()
 					system("pause");
 					break;
 				}
-				case 50: // Вторая строка
+				case 50: // ?????? ??????
 				{
 					system("cls");
 					std::cout << "Select index" << "\n";
@@ -218,21 +189,21 @@ int main()
 				}
 			}
 			break;
-		case 51: //Сложение строчек
+		case 51: //???????? ???????
 			for (;;)
 			{
 				system("cls");
 				std::cout << "Select option" << "\n";
-				std::cout << "1. 1+2" << "\n"; // Первую с второй
-				std::cout << "2. 2+1" << "\n"; // Вторую с первой
-				std::cout << "Esc.Exit" << "\n";  // Выйти
+				std::cout << "1. 1+2" << "\n"; // ?????? ? ??????
+				std::cout << "2. 2+1" << "\n"; // ?????? ? ??????
+				std::cout << "Esc.Exit" << "\n";  // ?????
 				std::cout << "First stroke:" << A << "\n";
 				std::cout << "Second stroke:" << B << "\n";
 				Menu = _getch();
 				if (Menu == 27) break;
 				switch (Menu)
 				{
-				case 49: 
+				case 49:
 					C = A + B;
 					break;
 				case 50:
@@ -241,7 +212,7 @@ int main()
 				}
 			}
 			break;
-		case 52: //Умножение строчек
+		case 52: //????????? ???????
 			for (;;)
 			{
 				system("cls");
@@ -266,7 +237,7 @@ int main()
 						system("pause");
 						break;
 					}
-					C = A * index; 
+					C = A * index;
 					break;
 				case 50:
 					std::cout << "Your coefficient:";
@@ -285,11 +256,11 @@ int main()
 				}
 			}
 			break;
-		case 53: //Добавить в конец
+		case 53: //??????????
 			for (;;)
 			{
 				system("cls");
-				std::cout << "Select stroke" << "\n";  
+				std::cout << "Select stroke" << "\n";
 				std::cout << "1." << A << "\n";
 				std::cout << "2." << B << "\n";
 				std::cout << "Esc.Exit" << "\n";
@@ -298,35 +269,17 @@ int main()
 				switch (Menu)
 				{
 				case 49:
-					A=A.append(Get_Delem());
+					std::cout << "Your stroke:";
+					A = newstroke();
 					break;
 				case 50:
-					B =B.append(Get_Delem());
+					std::cout << "Your stroke:";
+					B = newstroke();
 					break;
 				}
 			}
 			break;
-		case 54://Добавить вначало
-			for (;;)
-			{
-				system("cls");
-				std::cout << "Select list" << "\n";
-				std::cout << "1." << A << "\n";
-				std::cout << "2." << B << "\n";
-				std::cout << "Esc.Exit" << "\n";
-				Menu = _getch();
-				if (Menu == 27) break;
-				switch (Menu)
-				{
-				case 49:
-					A = A.extend(Get_Delem());
-					break;
-				case 50:
-					B = B.extend(Get_Delem());
-					break;
-				}
-			}
-		case 55: //подлист
+		case 54:
 			for (;;)
 			{
 				system("cls");
@@ -339,10 +292,18 @@ int main()
 				switch (Menu)
 				{
 				case 49:
-					C=A(select_start(), select_stop());
+					std::cout << "Select index:";
+					std::cin >> index;
+					std::cout << "Select number of characters:";
+					std::cin >> num;
+					C = C.substring(index, num, A);
 					break;
 				case 50:
-					C = B(select_start(), select_stop());
+					std::cout << "Select index:";
+					std::cin >> index;
+					std::cout << "Select number of characters:";
+					std::cin >> num;
+					C = C.substring(index, num, B);
 					break;
 				}
 			}
