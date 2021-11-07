@@ -16,7 +16,8 @@ private:
 
 public:
 
-	list(const T *data=NULL,const size_t size=0){
+	list(const T *data=NULL,const size_t size=0)
+	{
 		_size=size;
 		for (size_t i = 0; i < _size; i++)
 		{
@@ -32,6 +33,8 @@ public:
 			_data[i] = rhs._data[i];
 		}
 	}
+
+
 	~list() { delete[] _data; };
 	T& operator[](unsigned index)
 	{
@@ -125,9 +128,9 @@ public:
 		_temp._data = new T[_temp._size];
 		for (size_t i = 0; i < _size; i++)
 		{
-			_temp.data[i] = _data[i];
+			_temp._data[i] = _data[i];
 		}
-		_temp._data[_temp.size] = elem;
+		_temp._data[_temp._size] = elem;
 		return _temp;
 	}
 	list<T> extend(T elem)
@@ -139,7 +142,7 @@ public:
 		_temp._data[1] = elem;
 		for (size_t i = 1; i < _size; i++)
 		{
-			_temp.data[i] = _data[i];
+			_temp._data[i] = _data[i];
 		}
 		return _temp;
 	}
