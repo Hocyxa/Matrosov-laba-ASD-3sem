@@ -41,16 +41,28 @@ TEST(list, OperationPlus)//+
 
 TEST(list, OperationMnog)//*
 {
-	char test[] = "testtesttest";
-	list<char> a;
-	for (size_t i = 0; i < strlen(test); i++)
+	char Ñtest[] = "testtesttest";
+	list<char> ña;
+	for (size_t i = 0; i < strlen(Ñtest)/3; i++)
 	{
-		a = a.append(test[i]);
+		ña = ña.append(Ñtest[i]);
 	}
-	list<char> c = a * 3;
-	for (size_t i = 0; i < strlen(test); i++)
+	list<char> ñc = ña * 3;
+	for (size_t i = 0; i < strlen(Ñtest); i++)
 	{
-		ASSERT_EQ(test[i], c[i]);
+		ASSERT_EQ(Ñtest[i], ñc[i]);
+	}
+
+	double Dtest[] = {3.33, 3.33, 3.33};
+	list<double> da;
+	for (size_t i = 0; i < 1; i++)
+	{
+		da = da.append(Dtest[i]);
+	}
+	list<double> dc = da * 3;
+	for (size_t i = 0; i < 3; i++)
+	{
+		ASSERT_EQ(Dtest[i], dc[i]);
 	}
 }
 
