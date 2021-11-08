@@ -16,13 +16,10 @@ private:
 
 public:
 
-	list(const T *data=NULL,const size_t size=0)
+	list()
 	{
-		_size=size;
-		for (size_t i = 0; i < _size; i++)
-		{
-			_data[i] = data[i];
-		}
+		_data = NULL;
+		_size = 0;
 	};
 	list(const list<T>& rhs)
 	{
@@ -32,10 +29,8 @@ public:
 		{
 			_data[i] = rhs._data[i];
 		}
-	}
-
-
-	~list() { delete[] _data; };
+	};
+	~list() {};
 	T& operator[](unsigned index)
 	{
 		if ((index > _size - 1) || (index < 0) || (_size == 0))throw "Incorrect index!";
@@ -43,7 +38,7 @@ public:
 	};
 	list<T> operator+(const list<T>& rhs1)
 	{
-		list _temp("");
+		list<T> _temp;
 		delete[] _temp._data;                   
 		_temp._size = _size + rhs1._size;       
 		_temp._data = new T[_temp._size]; 
@@ -62,7 +57,7 @@ public:
 	list<T> operator*(const size_t n)
 	{
 		 if (n<1) throw "Incorrect num!";
-		 list _temp("");
+		 list<T> _temp;
 		delete[] _temp._data;
 		_temp._size = _size * n;
 		_temp._data = new T[_temp._size ];
@@ -78,7 +73,7 @@ public:
 	};
 	list<T> operator()(size_t start,size_t stop=0)
 	{
-		list _temp;
+		list<T> _temp;
 		delete _temp._data;
 		if (start > _size || stop > _size)throw "Incorrect index";
 		if (stop == 0)
@@ -101,12 +96,14 @@ public:
 		}
 		return _temp;
 	};
-	list<T>& operator=(const T* elements)
+	list<T>& operator=(const list<T>& rhs)
 	{
-		delete[] _data;
-		_size = std::strlen(elements);
+		_size = rhs._size;
 		_data = new T[_size ];
-		std::strcpy(_data, elements);
+		for (size_t i = 0; i < _size; i++)
+		{
+			_data[i] = rhs._data[i];
+		}
 		return *this;
 	}
 	friend ostream& operator << (std::ostream& os, const list<T>& s1)
@@ -117,33 +114,32 @@ public:
 			os << " '"<<s1._data[i]<<"'";
 			if (i != s1._size - 1) os << ",";
 		}
-		os << "]";
+		os << " ]";
 		return os;
 	};
 	list<T> append(T elem)
 	{
-		list _temp;
-		delete[] _temp._data;
+		list<T> _temp;
 		_temp._size = _size + 1;
 		_temp._data = new T[_temp._size];
 		for (size_t i = 0; i < _size; i++)
 		{
 			_temp._data[i] = _data[i];
 		}
-		_temp._data[_temp._size] = elem;
+		_temp._data[_temp._size - 1] = elem;
 		return _temp;
-	}
+	};
 	list<T> extend(T elem)
 	{
-		list _temp;
+		list<T> _temp;
 		delete[] _temp._data;
 		_temp._size = _size + 1;
 		_temp._data = new T[_temp._size];
-		_temp._data[1] = elem;
+		_temp._data[0] = elem;
 		for (size_t i = 1; i < _size; i++)
 		{
 			_temp._data[i] = _data[i];
 		}
 		return _temp;
-	}
+	};
 };
