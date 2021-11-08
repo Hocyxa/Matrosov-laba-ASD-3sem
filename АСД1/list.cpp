@@ -76,6 +76,7 @@ public:
 		list<T> _temp;
 		delete _temp._data;
 		if (start > _size || stop > _size)throw "Incorrect index";
+		if (start > stop && stop!=0)throw "Incorrect index";
 		if (stop == 0)
 		{
 			_temp._size = _size - start;
@@ -87,7 +88,7 @@ public:
 		}
 		else
 		{
-			_temp._size = stop - start;
+			_temp._size = stop - start+1;
 			_temp._data = new T[_temp._size];
 			for (size_t i = 0; i < _temp._size; i++)
 			{

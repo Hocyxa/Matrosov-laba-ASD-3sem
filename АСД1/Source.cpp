@@ -7,30 +7,54 @@ using std::cout;
 
 size_t select_start()
 {
-	cout << "Select first element:";
+	cout << "Select index first element:";
 	size_t start;
 	cin >> start;
 	return start;
 }
 size_t select_stop()
 {
-	cout << "Select last element:";
+	cout << "Select index last element:";
 	size_t stop;
 	cin >> stop;
 	return stop;
 }
 double Get_Delem()
 {
-	std::cout << "Your elem:";
 	double elem;
-	cin >> elem;
+	for (;;)
+	{
+		std::cout << "Your elem:";
+		cin >> elem;
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore(32767, '\n');
+			std::cout << "Enter the double number!" << "\n";
+			system("pause");
+			cout << "\n";
+		}
+		else break;
+	}
 	return elem;
 }
 int Get_Ielem()
 {
-	std::cout << "Your elem:";
 	int elem;
-	cin >> elem;
+	for (;;)
+	{
+		std::cout << "Your elem:";
+		cin >> elem;
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore(32767, '\n');
+			std::cout << "Enter the integer number!" << "\n";
+			system("pause");
+			cout << "\n";
+		}
+		else break;
+	}
 	return elem;
 }
 char Get_Celem()
@@ -38,6 +62,7 @@ char Get_Celem()
 	std::cout << "Your elem:";
 	char elem;
 	cin >> elem;
+
 	return elem;
 }
 
@@ -242,7 +267,7 @@ int main()
 						break;
 					}
 					system("pause");
-					break;
+				
 				}
 				}
 			}
@@ -300,7 +325,7 @@ int main()
 					}
 					try
 					{
-						char character;
+						char character;//Под типы данных
 						std::cout << "Your characte:";
 						std::cin >> character;
 						switch (alternative)
