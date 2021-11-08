@@ -81,7 +81,11 @@ int main()
 	list<char> CA;
 	list<char> CB;
 	list<char> CC;
+	double Delem;
+	int Ielem;
+	char Celem;
 	std::cout << "Laboratory work 1. Class:Stroke" << "\n";
+	system("pause");
 	for (;;)
 	{
 		system("cls");
@@ -89,14 +93,13 @@ int main()
 		cout << "1.Double" << "\n";
 		cout << "2.Int" << "\n";
 		cout << "3.Char" << "\n";
-		cout << "Your select";
+		cout << "Your select: ";
 		cin >> alternative;
 		if (alternative >= 1 && alternative <= 3)
 		{
 			break;
 		}
 	}
-	system("pause");
 	for (;;)
 	{
 		system("cls");
@@ -271,7 +274,6 @@ int main()
 				}
 				}
 			}
-			break;
 		case 50: // Запись по индексу
 			for (;;)
 			{
@@ -325,19 +327,19 @@ int main()
 					}
 					try
 					{
-						char character;//Под типы данных
-						std::cout << "Your characte:";
-						std::cin >> character;
 						switch (alternative)
 						{
 						case 1:
-							DA[index - 1] = character;
+							Delem = Get_Delem();
+							DA[index - 1] = Delem;
 							break;
 						case 2:
-							IA[index - 1] = character;
+							Ielem = Get_Ielem();
+							IA[index - 1] = Ielem;
 							break;
 						case 3:
-							CA[index - 1] = character;
+							Celem = Get_Celem();
+							CA[index - 1] = Celem;
 							break;
 						}
 					}
@@ -370,13 +372,13 @@ int main()
 					switch (alternative)
 					{
 					case 1:
-						std::cout << "1:" << DB << "\n";
+						std::cout << "2:" << DB << "\n";
 						break;
 					case 2:
-						std::cout << "1:" << IB << "\n";
+						std::cout << "2:" << IB << "\n";
 						break;
 					case 3:
-						std::cout << "1:" << CB << "\n";
+						std::cout << "2:" << CB << "\n";
 						break;
 					}
 					std::cout << "Your index:";
@@ -390,19 +392,19 @@ int main()
 						break;
 					}
 					try {
-						char character;
-						std::cout << "Your characte:";
-						std::cin >> character;
 						switch (alternative)
 						{
 						case 1:
-							DB[index - 1] = character;
+							Delem = Get_Delem();
+							DB[index - 1] = Delem;
 							break;
 						case 2:
-							IB[index - 1] = character;
+							Ielem = Get_Ielem();
+							IB[index - 1] = Ielem;
 							break;
 						case 3:
-							CB[index - 1] = character;
+							Celem = Get_Celem();
+							CB[index - 1] = Celem;
 							break;
 						}
 					}
@@ -428,7 +430,6 @@ int main()
 					system("pause");
 					break;
 				}
-				break;
 				}
 			}
 		case 51: //Сложение списков

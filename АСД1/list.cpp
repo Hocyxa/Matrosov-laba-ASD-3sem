@@ -79,11 +79,11 @@ public:
 		if (start > stop && stop!=0)throw "Incorrect index";
 		if (stop == 0)
 		{
-			_temp._size = _size - start;
+			_temp._size = _size - start+1;
 			_temp._data = new T[_temp._size];
 			for (size_t i = 0; i < _temp._size; i++)
 			{
-				_temp._data[i] = _data[start + i];
+				_temp._data[i] = _data[start + i -1];
 			}
 		}
 		else
@@ -92,7 +92,7 @@ public:
 			_temp._data = new T[_temp._size];
 			for (size_t i = 0; i < _temp._size; i++)
 			{
-				_temp._data[i] = _data[start + i];
+				_temp._data[i] = _data[start -1 + i];
 			}
 		}
 		return _temp;
@@ -132,15 +132,24 @@ public:
 	};
 	list<T> extend(T elem)
 	{
-		list<T> _temp;
-		delete[] _temp._data;
-		_temp._size = _size + 1;
-		_temp._data = new T[_temp._size];
-		_temp._data[0] = elem;
-		for (size_t i = 1; i < _size; i++)
+		if (_size == 0)
 		{
-			_temp._data[i] = _data[i];
+			list<T> _temp;
+			_temp = _temp.append(elem);
+			return _temp;
 		}
-		return _temp;
+		else 
+		{
+			list<T> _temp;
+			delete[] _temp._data;
+			_temp._size = _size + 1;
+			_temp._data = new T[_temp._size];
+			_temp._data[0] = elem;
+			for (size_t i = 0; i < _temp._size; i++)
+			{
+				_temp._data[i + 1] = _data[i];
+			}
+			return _temp;
+		}
 	};
 };
