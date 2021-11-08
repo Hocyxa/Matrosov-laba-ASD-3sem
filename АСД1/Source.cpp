@@ -705,36 +705,45 @@ int main()
 				}
 				std::cout << "Esc.Exit" << "\n";
 				Menu = _getch();
-				if (Menu == 27) break;
-				switch (Menu)
+				try
 				{
-				case 49:
-					switch (alternative)
+					if (Menu == 27) break;
+					switch (Menu)
 					{
-					case 1:
-						DC = DA(select_start(), select_stop());
+					case 49:
+						switch (alternative)
+						{
+						case 1:
+							DC = DA(select_start(), select_stop());
+							break;
+						case 2:
+							IC = IA(select_start(), select_stop());
+							break;
+						case 3:
+							CC = CA(select_start(), select_stop());
+							break;
+						}
 						break;
-					case 2:
-						IC = IA(select_start(), select_stop());
-						break;
-					case 3:
-						CC = CA(select_start(), select_stop());
+					case 50:
+						switch (alternative)
+						{
+						case 1:
+							DC = DB(select_start(), select_stop());
+							break;
+						case 2:
+							DC = DB(select_start(), select_stop());
+							break;
+						case 3:
+							DC = DB(select_start(), select_stop());
+							break;
+						}
 						break;
 					}
-					break;
-				case 50:
-					switch (alternative)
-					{
-					case 1:
-						DC = DB(select_start(), select_stop());
-						break;
-					case 2:
-						DC = DB(select_start(), select_stop());
-						break;
-					case 3:
-						DC = DB(select_start(), select_stop());
-						break;
-					}
+				}
+				catch (const char* err)
+				{
+					std::cerr << err << "\n";
+					system("pause");
 					break;
 				}
 			}

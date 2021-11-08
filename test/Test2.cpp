@@ -1,6 +1,5 @@
-#include "gtest/gtest.h"
 #include "C:\Users\matro\source\repos\ÀÑÄ1\ÀÑÄ1\list.cpp"
-
+#include "pch.h"
 
 TEST(list, OperatorSquareBrackets)//[]
 {
@@ -23,7 +22,7 @@ TEST(list, OperationPlus)//+
 	b = b.append(test[2]);
 	b = b.append(test[3]);
 	c = a + b;
-	for (int i = 0; i < strlen(test); i++)
+	for (size_t i = 0; i < strlen(test); i++)
 	{
 		ASSERT_EQ(test[i], c[i]);
 	}
@@ -33,12 +32,12 @@ TEST(list, OperationMnog)//*
 {
 	char test[] = "testtesttest";
 	list<char> a;
-	for (int i = 0; i < strlen(test); i++)
+	for (size_t i = 0; i < strlen(test); i++)
 	{
 		a = a.append(test[i]);
 	}
 	list<char> c = a * 3;
-	for (int i = 0; i < strlen(test); i++)
+	for (size_t i = 0; i < strlen(test); i++)
 	{
 		ASSERT_EQ(test[i], c[i]);
 	}
@@ -49,13 +48,13 @@ TEST(list, OperationSkob)//()
 	char aT[] = "test";
 	char test[] = "est";
 	list <char> a;
-	for (int i = 0; i < strlen(aT); i++)
+	for (size_t i = 0; i < strlen(aT); i++)
 	{
 		a = a.append(aT[i]);
 	}
 	
 	list<char> c = a(2,3);
-	for (int i = 0; i < strlen(test); i++)
+	for (size_t i = 0; i < strlen(test); i++)
 	{
 		ASSERT_EQ(test[i], c[i]);
 	}
