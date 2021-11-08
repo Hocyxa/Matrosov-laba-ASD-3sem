@@ -30,7 +30,7 @@ public:
 			_data[i] = rhs._data[i];
 		}
 	};
-	~list() {};
+	~list() { delete[] _data; };
 	T& operator[](unsigned index)
 	{
 		if ((index > _size - 1) || (index < 0) || (_size == 0))throw "Incorrect index!";
