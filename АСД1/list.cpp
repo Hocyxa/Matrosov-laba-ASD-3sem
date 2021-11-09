@@ -54,14 +54,13 @@ public:
 		}
 		return _temp;
 	};
-	list<T> operator*(const size_t n)
+	list<T> operator*(const int n)
 	{
-		 if (n<1) throw "Incorrect num!";
-		 list<T> _temp;
+		if (n<1)throw "Incorrect num!";
+		list<T> _temp;
 		delete[] _temp._data;
 		_temp._size = _size * n;
 		_temp._data = new T[_temp._size ];
-		
 		for (unsigned j = 0; j < n; j++)
 		{
 			for (unsigned i = 0; i < _size; i++)

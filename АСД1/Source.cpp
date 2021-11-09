@@ -70,7 +70,7 @@ int main()
 {
 	unsigned alternative;
 	unsigned Menu;
-	unsigned index;
+	int index;
 	unsigned num;	
 	list<double> DA;
 	list<double> DB;
@@ -528,16 +528,25 @@ int main()
 						system("pause");
 						break;
 					}
-					switch (alternative)
+					try
 					{
-					case 1:
-						DC = DA * index;
-						break;
-					case 2:
-						IC = IA * index;
-						break;
-					case 3:
-						CC = CA * index;
+						switch (alternative)
+						{
+						case 1:
+							DC = DA * index;
+							break;
+						case 2:
+							IC = IA * index;
+							break;
+						case 3:
+							CC = CA * index;
+							break;
+						}
+					}
+					catch (const char* err)
+					{
+						std::cerr << err << "\n";
+						system("pause");
 						break;
 					}
 					break;
@@ -553,16 +562,25 @@ int main()
 						system("pause");
 						break;
 					}
-					switch (alternative)
+					try
 					{
-					case 1:
-						DC = DB * index;
-						break;
-					case 2:
-						IC = IB * index;
-						break;
-					case 3:
-						CC = CB * index;
+						switch (alternative)
+						{
+						case 1:
+							DC = DB * index;
+							break;
+						case 2:
+							IC = IB * index;
+							break;
+						case 3:
+							CC = CB * index;
+							break;
+						}
+					}
+					catch (const char* err)
+					{
+						std::cerr << err << "\n";
+						system("pause");
 						break;
 					}
 					break;
