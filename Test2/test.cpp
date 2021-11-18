@@ -3,35 +3,36 @@
 
 TEST(list, OperatorSquareBrackets)//[]
 {
-	list<char> a;
-	a = a.append('t');
-	ASSERT_EQ('t', a[0]);
+	list<std::string> a;
+	std::string test = "Кто прочитает, тот воскреснет";
+	a + test;
+	ASSERT_EQ("Кто прочитает, тот воскреснет", a[0]);
 	list<double> b;
-	b = b.append(6.66);
+	b + 6.66;
 	ASSERT_EQ(6.66, b[0]);
 }
 
 TEST(list, OperationPlus)//+
 {
-	char Ctest[] = "Test";
-	list<char> ca;
-	list<char> cb;
-	list<char> cc;
-	ca = ca.append(Ctest[0]);
-	ca = ca.append(Ctest[1]);
-	cb = cb.append(Ctest[2]);
-	cb = cb.append(Ctest[3]);
-	cc = ca + cb;
-	for (size_t i = 0; i < strlen(Ctest); i++)
+	std::string Stest[] = { "Кто"," прочитает", " тот","воскреснет" };
+	list<std::string> Sa;
+	list<std::string> Sb;
+	list<std::string> Sc;
+	Sa +(Stest[0]);
+	Sa +(Stest[1]);
+	Sb +(Stest[2]);
+	Sb +(Stest[3]);
+	Sc = Sa + Sb;
+	for (size_t i = 0; i < 3; i++)
 	{
-		ASSERT_EQ(Ctest[i], cc[i]);
+		ASSERT_EQ(Stest[i], Sc[i]);
 	}
 	double Dtest[] = { 3.33, 6.66 };
 	list<double> da;
 	list<double> db;
 	list<double> dc;
-	da = da.append(Dtest[0]);
-	db = db.append(Dtest[1]);
+	da +(Dtest[0]);
+	db +(Dtest[1]);
 	dc = da + db;
 	for (size_t i = 0; i < 2; i++)
 	{
@@ -41,23 +42,23 @@ TEST(list, OperationPlus)//+
 
 TEST(list, OperationMnog)//*
 {
-	char Сtest[] = "testtesttest";
-	list<char> сa;
-	for (size_t i = 0; i < strlen(Сtest)/3; i++)
+	std::string Stest[] = { "test","test","test" };
+	list<std::string> сa;
+	for (size_t i = 0; i < 3 /3; i++)
 	{
-		сa = сa.append(Сtest[i]);
+		сa + (Stest[i]);
 	}
-	list<char> сc = сa * 3;
-	for (size_t i = 0; i < strlen(Сtest); i++)
+	list<std::string> Sc = сa * 3;
+	for (size_t i = 0; i < 3; i++)
 	{
-		ASSERT_EQ(Сtest[i], сc[i]);
+		ASSERT_EQ(Stest[i], Sc[i]);
 	}
 
 	double Dtest[] = {3.33, 3.33, 3.33};
 	list<double> da;
-	for (size_t i = 0; i < 1; i++)
+	for (size_t i = 0; i < 3/3; i++)
 	{
-		da = da.append(Dtest[i]);
+		da +(Dtest[i]);
 	}
 	list<double> dc = da * 3;
 	for (size_t i = 0; i < 3; i++)
@@ -68,15 +69,15 @@ TEST(list, OperationMnog)//*
 
 TEST(list, OperationSkob)//()
 {
-	char aT[] = "test";
-	char test[] = "est";
-	list <char> a;
-	for (size_t i = 0; i < strlen(aT); i++)
+	std::string aT[] = { "t","e","s","t" };
+	std::string test[] = { "e","s","t" };
+	list <std::string> a;
+	for (size_t i = 0; i < 4; i++)
 	{
-		a = a.append(aT[i]);
+		a +(aT[i]);
 	}
-	list<char> c = a(2, 4);
-	for (size_t i = 0; i < strlen(test); i++)
+	list<std::string> c = a(2, 4);
+	for (size_t i = 0; i < 3; i++)
 	{
 		ASSERT_EQ(test[i], c[i]);
 	}
@@ -84,8 +85,8 @@ TEST(list, OperationSkob)//()
 
 TEST(list, ExceptionInSquareBracketsOperator)//Исключение []
 {
-	list<char> a;
-	a = a.append('t');
+	list<std::string> a;
+	a +("t");
 	ASSERT_THROW(a[-1], const char*);
 	ASSERT_THROW(a[2], const char*);
 	list<int> b;
@@ -94,12 +95,12 @@ TEST(list, ExceptionInSquareBracketsOperator)//Исключение []
 
 TEST(list, ExeptionInBracketsOperator)//Исключение ()
 {
-	char aT[] = "test";
-	char test[] = "est";
-	list <char> a;
-	for (size_t i = 0; i < strlen(aT); i++)
+	std::string aT[] = { "t","e","s","t" };
+	std::string test[] = { "e","s","t" };
+	list <std::string> a;
+	for (size_t i = 0; i < 4; i++)
 	{
-		a = a.append(aT[i]);
+		a +(aT[i]);
 	}
 	ASSERT_THROW(a(20, 25), const char*);
 	ASSERT_THROW(a(3, 1), const char*);
@@ -108,11 +109,11 @@ TEST(list, ExeptionInBracketsOperator)//Исключение ()
 TEST(list, ExeptionInMultiOperator)//Исключение *
 {
 
-	char test[] = "test";
-	list<char> a;
-	for (size_t i = 0; i < strlen(test); i++)
+	std::string test[] = { "test" };
+	list<std::string> a;
+	for (size_t i = 0; i < 1; i++)
 	{
-		a = a.append(test[i]);
+		a +(test[i]);
 	}
 	ASSERT_THROW(a * 0, const char*);
 

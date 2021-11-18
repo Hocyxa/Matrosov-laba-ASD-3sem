@@ -75,8 +75,7 @@ public:
 		}
 		else
 		{
-			
-			for (unsigned i = start - 1; i < stop - start + 1; i++)
+			for (unsigned i = start - 1; i < stop - start + 2; i++)
 			{
 				Result + v[i];
 			}
