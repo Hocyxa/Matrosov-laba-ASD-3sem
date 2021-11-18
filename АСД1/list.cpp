@@ -1,17 +1,23 @@
 #include <iostream>
 #include<vector>
 #pragma once
+
 using std::ostream;
 using std::istream;
+
 template<class T>
 class list
 {
 private:
-	std::vector <T> v;
+	std::vector<T> v;
 public:
 	unsigned Get_size()const
 	{
 		return v.size();
+	};
+	void operator+(T element)
+	{
+		v.push_back(element);
 	};
 	T &operator[](unsigned index)
 	{
@@ -36,9 +42,9 @@ public:
 	list<T> operator+(const list<T>& rhs1)
 	{
 		list<T> Result = *this;
-		for (auto j=rhs1.begin(); j !=rhs1.end(); j++)
+		for (unsigned j=0;j<rhs1.Get_size(); j++)
 		{
-			Result.push_back(*j);
+			Result + rhs1[j];
 		}
 		return Result;
 	};
@@ -46,13 +52,11 @@ public:
 	{
 		if (n<1)throw "Incorrect num!";
 		list<T> Result;
-		auto r = Result.begin();
 		for (unsigned j = 0; j < n; j++)
 		{
 			for (auto i=v.begin(); i!=v.end(); i++)
 			{
-				r=*i;
-				r++;
+				Result + *i;
 			}
 		}
 		return Result;
@@ -60,36 +64,25 @@ public:
 	list<T> operator()(size_t start,size_t stop=0)
 	{
 		list<T> Result;
-		auto r=Result.begin();
 		if (start > v.size() || stop > v.size())throw "Incorrect index";
 		if (start > stop && stop!=0)throw "Incorrect index";
 		if (stop == 0)
 		{
-			for (auto i = v.begin()+start-1; i != v.end(); i++)
+			for (unsigned i=0;i<v.size(); i++)
 			{
-				*r = *i;
+				Result +v[i];
 			}
 		}
 		else
 		{
-			auto j = v.begin();
-			for (auto i = v.begin() + start - 1; i != stop - start + 1; i++)
+			
+			for (unsigned i = start - 1; i < stop - start + 1; i++)
 			{
-				*r = *j;
+				Result + v[i];
 			}
 		}
 		return Result;
 	};
-	list<T>& operator=(const list<T>& rhs)
-	{
-		auto rs = rhs.begin();
-		for (auto i=v.begin();i!=v.end();i++)
-		{
-			*i = rhs._data[i];
-			rs++;
-		}
-		return *this;
-	}
 	friend ostream& operator << (std::ostream& os, const list<T>& s1)
 	{
 		unsigned size = s1.Get_size();
@@ -101,9 +94,5 @@ public:
 		}
 		os << " ]";
 		return os;
-	};
-	void append(T elem)
-	{
-		v.push_back(elem);
 	};
 };

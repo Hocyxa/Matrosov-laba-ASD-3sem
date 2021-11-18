@@ -57,10 +57,10 @@ int Get_Ielem()
 	}
 	return elem;
 }
-char Get_Celem()
+std::string Get_Selem()
 {
 	std::cout << "Your elem:";
-	char elem;
+	std::string elem;
 	cin >> elem;
 
 	return elem;
@@ -76,10 +76,13 @@ int main()
 	list<double> DC;
 	list<int> IA;
 	list<int> IB;
-	list<int> IC;	
+	list<int> IC;
+	list<std::string> SA;
+	list<std::string> SB;
+	list<std::string> SC;
 	double Delem;
 	int Ielem;
-	char Celem;
+	std::string Selem;
 	std::cout << "Laboratory work 1. Class:Stroke" << "\n";
 	system("pause");
 	for (;;)
@@ -88,9 +91,10 @@ int main()
 		cout << "Select data type" << "\n";
 		cout << "1.Double" << "\n";
 		cout << "2.Int" << "\n";
+		cout << "3.String" << "\n";
 		cout << "Your select: ";
 		cin >> alternative;
-		if (alternative >= 1 && alternative <= 2)
+		if (alternative >= 1 && alternative <= 3)
 		{
 			break;
 		}
@@ -117,7 +121,13 @@ int main()
 			std::cout << "Second list:" << IB << "\n";
 			std::cout << "Result list:" << IC << "\n";
 			break;
+		case 3:
+			std::cout << "First list:" << SA << "\n";
+			std::cout << "Second list:" << SB << "\n";
+			std::cout << "Result list:" << SC << "\n";
+			break;
 		}
+		
 		Menu = _getch();
 		if (Menu == 27) break;
 		switch (Menu)
@@ -137,6 +147,10 @@ int main()
 					std::cout << "1:" << IA << "\n";
 					std::cout << "2:" << IB << "\n";
 					break;
+				case 3:
+					std::cout << "1:" << SA << "\n";
+					std::cout << "2:" << SB << "\n";
+					break;
 				}
 				std::cout << "Esc.Back to main menu" << "\n";
 				Menu = _getch();
@@ -154,6 +168,9 @@ int main()
 						break;
 					case 2:
 						std::cout << "1:" << IA << "\n";
+						break;
+					case 3:
+						std::cout << "1:" << SA << "\n";
 						break;
 					}
 					std::cout << "Your index:";
@@ -181,6 +198,12 @@ int main()
 							std::cout << "2:" << IB << "\n";
 							std::cout << "This is your character:" << IA[index - 1] << "\n";
 							break;
+						case 3:
+							std::cout << "1:" << SA << "\n";
+							std::cout << "2:" << SB << "\n";
+							std::cout << "This is your character:" << SA[index - 1] << "\n";
+							break;
+
 						}
 					}
 					catch (const char* err)
@@ -203,6 +226,9 @@ int main()
 						break;
 					case 2:
 						std::cout << "2:" << IB << "\n";
+						break;
+					case 3:
+						std::cout << "3:" << SB << "\n";
 						break;
 					}
 					std::cout << "Your index:";
@@ -230,6 +256,11 @@ int main()
 							std::cout << "2:" << IB << "\n";
 							std::cout << "This is your character:" << IB[index - 1] << "\n";
 							break;
+						case 3:
+							std::cout << "1:" << SA << "\n";
+							std::cout << "2:" << SB << "\n";
+							std::cout << "This is your character:" << SB[index - 1] << "\n";
+							break;
 						}
 					}
 					catch (const char* err)
@@ -239,10 +270,10 @@ int main()
 						break;
 					}
 					system("pause");
-				
 				}
 				}
 			}
+			break;
 		case 50: // Запись по индексу
 			for (;;)
 			{
@@ -257,6 +288,10 @@ int main()
 				case 2:
 					std::cout << "1:" << IA << "\n";
 					std::cout << "2:" << IB << "\n";
+					break;
+				case 3:
+					std::cout << "1:" << SA << "\n";
+					std::cout << "2:" << SB << "\n";
 					break;
 				}
 				std::cout << "Esc.Back to main menu" << "\n";
@@ -275,6 +310,9 @@ int main()
 						break;
 					case 2:
 						std::cout << "1:" << IA << "\n";
+						break;
+					case 3:
+						std::cout << "1:" << SA << "\n";
 						break;
 					}
 					std::cout << "Your index:";
@@ -299,6 +337,10 @@ int main()
 							Ielem = Get_Ielem();
 							IA[index - 1] = Ielem;
 							break;
+						case 3:
+							Selem = Get_Selem();
+							SA[index - 1] = Selem;
+							break;
 						}
 					}
 					catch (const char* err)
@@ -316,6 +358,9 @@ int main()
 					case 2:
 						cout << IA << "\n";
 						break;
+					case 3:
+						cout << SA << "\n";
+						break;
 					}
 					system("pause");
 					break;
@@ -331,6 +376,9 @@ int main()
 						break;
 					case 2:
 						std::cout << "2:" << IB << "\n";
+						break;
+					case 3:
+						std::cout << "2:" << SB << "\n";
 						break;
 					}
 					std::cout << "Your index:";
@@ -354,6 +402,10 @@ int main()
 							Ielem = Get_Ielem();
 							IB[index - 1] = Ielem;
 							break;
+						case 3:
+							Selem = Get_Selem();
+							SB[index - 1] = Selem;
+							break;
 						}
 					}
 					catch (const char* err)
@@ -371,12 +423,16 @@ int main()
 					case 2:
 						cout << IB << "\n";
 						break;
+					case 3:
+						cout << SB << "\n";
+						break;
 					}
 					system("pause");
 					break;
 				}
 				}
 			}
+			break;
 		case 51: //Сложение списков
 			for (;;)
 			{
@@ -395,6 +451,10 @@ int main()
 					std::cout << "1." << IA << "\n";
 					std::cout << "2." << IB << "\n";
 					break;
+				case 3:
+					std::cout << "1." << SA << "\n";
+					std::cout << "2." << SB << "\n";
+					break;
 				}
 				Menu = _getch();
 				if (Menu == 27) break;
@@ -409,6 +469,9 @@ int main()
 					case 2:
 						IC = IA + IB;
 						break;
+					case 3:
+						SC = SA + SB;
+						break;
 					}
 					break;
 				case 50:
@@ -419,6 +482,9 @@ int main()
 						break;
 					case 2:
 						IC = IB + IA;
+						break;
+					case 3:
+						SC = SB + SA;
 						break;
 					}
 					break;
@@ -439,6 +505,10 @@ int main()
 				case 2:
 					std::cout << "1." << IA << "\n";
 					std::cout << "2." << IB << "\n";
+					break;
+				case 3:
+					std::cout << "1." << SA << "\n";
+					std::cout << "2." << SB << "\n";
 					break;
 				}
 				std::cout << "Esc.Back to main menu" << "\n";
@@ -468,6 +538,9 @@ int main()
 							break;
 						case 2:
 							IC = IA * index;
+							break;
+						case 3:
+							SC = SA * index;
 							break;
 						}
 					}
@@ -500,6 +573,9 @@ int main()
 						case 2:
 							IC = IB * index;
 							break;
+						case 3:
+							SC = SB * index;
+							break;
 						}
 					}
 					catch (const char* err)
@@ -527,6 +603,10 @@ int main()
 					std::cout << "1." << IA << "\n";
 					std::cout << "2." << IB << "\n";
 					break;
+				case 3:
+					std::cout << "1." << SA << "\n";
+					std::cout << "2." << SB << "\n";
+					break;
 				}
 				std::cout << "Esc.Exit" << "\n";
 				Menu = _getch();
@@ -538,10 +618,13 @@ int main()
 					switch (alternative)
 					{
 					case 1:
-						DA.append(Get_Delem());
+						DA +(Get_Delem());
 						break;
 					case 2:
-						IA.append(Get_Ielem());
+						IA +(Get_Ielem());
+						break;
+					case 3:
+						SA + (Get_Selem());
 						break;
 					}
 					break;
@@ -549,10 +632,13 @@ int main()
 					switch (alternative)
 					{
 					case 1:
-						DB.append(Get_Delem());
+						DB +(Get_Delem());
 						break;
 					case 2:
-						IB.append(Get_Ielem());
+						IB +(Get_Ielem());
+						break;
+					case 3:
+						SB + (Get_Selem());
 						break;
 					}
 					break;
@@ -574,6 +660,10 @@ int main()
 					std::cout << "1." << IA << "\n";
 					std::cout << "2." << IB << "\n";
 					break;
+				case 3:
+					std::cout << "1." << SA << "\n";
+					std::cout << "2." << SB << "\n";
+					break;
 				}
 				std::cout << "Esc.Exit" << "\n";
 				Menu = _getch();
@@ -591,6 +681,9 @@ int main()
 						case 2:
 							IC = IA(select_start(), select_stop());
 							break;
+						case 3:
+							SC = SA(select_start(), select_stop());
+							break;
 						}
 						break;
 					case 50:
@@ -601,6 +694,9 @@ int main()
 							break;
 						case 2:
 							IC = IB(select_start(), select_stop());
+							break;
+						case 3:
+							SC = SB(select_start(), select_stop());
 							break;
 						}
 						break;
